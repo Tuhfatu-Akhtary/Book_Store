@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Lucida Sans",sans-serif;
+}
+
+body{
+    background-image: url("book_store.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.update {
+    width: 400px;
+    background-color: sandybrown;
+    margin: 100px auto;
+    border-radius: 10px;
+}
+
+.update h1 {
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+.update form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+.update form label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80px;
+    height: 50px;
+    color: #000000;
+}
+.update form input[type="text"], .update form input[type="number"] {
+    width: 280px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    border-radius: 5px;
+}
+.update form input[type="submit"] {
+    width: 80%;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #fc5a03;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 10px;
+}
+.update form input[type="submit"]:hover {
+    background-color: #fc3903;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="book_add.css">
+    <title>Add Book</title>
+</head>
+<body>
+<div class="book_add">
+    <h1>Add Book</h1>
+    <form action="book_add" method="post">
+        <label for="book_name"> Book Name</label>
+        <input type="text" placeholder="Enter book name" name="book_name" id="book_name" required>
+        <label for="edition">Edition</label>
+        <input type="text" placeholder="Enter book edition" name="edition" id="edition" required>
+        <label for="author">Author</label>
+        <input type="text" placeholder="Enter author name" name="author" id="author" required>
+        <label for="publisher">Publisher</label>
+        <input type="text" placeholder="Enter publisher name" name="publisher" id="publisher" required>
+        <label for="genre">Genre</label>
+        <input type="text" placeholder="Enter genre" name="genre" id="genre" required>
+        <label for="no_page">Number of Pages</label>
+        <input type="text" placeholder="Enter number of pages" name="no_page" id="no_page" required>
+        <label for="price">Price</label>
+        <input type="text" placeholder="Enter price" name="price" id="price" required>
+        <label for="no_available_books">Number of Available Copies</label>
+        <input type="number" placeholder="Enter number of available copies" name="no_available_books" id="no_available_books" required>
+        <input type="submit" value="Add">
+    </form>
+</div>
+</body>
+</html>

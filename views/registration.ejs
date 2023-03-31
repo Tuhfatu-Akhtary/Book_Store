@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="registration.css">
+    <title>Book Store User Login</title>
+</head>
+<body>
+<div class="registration">
+    <h1>Sign Up</h1>
+    <form action="registration" method="post">
+        <label for="name">Name</label>
+        <input type="text" placeholder="Enter your name" name="name" id="name" required>
+        <label for="email">Email</label>
+        <input type="email" placeholder="Enter your email" name="email" id="email" required>
+        <label for="phone_no">Contact Number</label>
+        <input type="tel" placeholder="Enter your contact number" name="phone_no" id="phone_no" required>
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter your password" name="password" id="password" required>
+        <label for="cpassword"> Confirm Password</label>
+        <input type="password" placeholder="Confirm your password" name="cpassword" id="cpassword" required>
+        <input type="submit" value="Sign Up">
+    </form>
+    <p>Already have an account?<a href="/login">Login</a></p>
+</div>
+</body>
+</html>
