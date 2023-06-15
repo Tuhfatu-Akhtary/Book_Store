@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="book_listUser.css">
+    <title>Book List</title>
+</head>
+
+<body>
+
+<div class="logout">
+    <button><a href="/logout">Log out</a></button>
+</div>
+<div class="book_list">
+    <h1>Book List</h1>
+    <table>
+        <tr>
+            <th hidden>ID</th>
+            <th>Book Name</th>
+            <th>Edition</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Genre</th>
+            <th>Number of Pages</th>
+            <th>Price</th>
+            <th>Number of Available Books</th>
+
+        </tr>
+        <% if(book_details.length>0) { %>
+            <% for(var i=0;i< book_details.length;i++){%>
+            <tr>
+                <td hidden><%= book_details[i].id%></td>
+                <td><%= book_details[i].book_name%></td>
+                <td><%= book_details[i].edition%></td>
+                <td><%= book_details[i].author%></td>
+                <td><%= book_details[i].publisher%></td>
+                <td><%= book_details[i].genre%></td>
+                <td><%= book_details[i].no_page%></td>
+                <td><%= book_details[i].price%></td>
+                <td><%= book_details[i].no_available_books%></td>
+
+
+
+                <%}%>
+            </tr>
+        <% } else{%>
+            <h1>Data not found</h1>
+        <%}%>
+    </table>
+
+    <div class="add">
+    </div>
+
+</div>
+</body>
+</html>

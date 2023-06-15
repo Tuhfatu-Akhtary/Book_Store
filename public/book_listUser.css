@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Lucida Sans",sans-serif;
+}
+
+body{
+    background-image: url("book_store.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.book_list{
+    width: 90%;
+    background-color: sandybrown;
+    margin: 50px auto;
+    border-radius: 10px;
+    padding: 0 20px;
+}
+
+.book_list h1{
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+
+table,th,td{
+    border: 2px solid black;
+    border-collapse: collapse;
+    justify-content:center;
+    align-items: center;
+
+}
+
+td{
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+button{
+    display: flex;
+    background-color: #fc5a03;
+    padding: 10px;
+    height: 30px;
+    width: 110px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin:5px;
+    border-radius: 10px;
+}
+.logout{
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.add{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    padding-bottom: 30px;
+    align-items: center;
+}

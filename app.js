@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 const mysql=require('mysql');
 const bodyParser=require('body-parser');
-var session=require('express-session');
+const session=require('express-session');
 
 app.use(function (req,res,next){
     res.set('Cache-Control','no-cache,private,must-revalidate,no-store');
@@ -34,10 +34,11 @@ app.post("/login",function (req,res){
 
     if(email && password){
         var sql="SELECT * FROM user WHERE email=? AND password=?;";
-        con.query(sql,[email,password],function (error,results){
+        con.query(sql,[email,password],function (error,results,fields){
             if(results.length>0){
                 req.session.loggedin=true;
                 req.session.email=email;
+                req.session.role=results[0].role;
                 res.redirect("/book_list");
 
             }
@@ -52,6 +53,16 @@ app.post("/login",function (req,res){
     }
 });
 
+const requireRole=(role)=>{
+    return (req, res, next) => {
+        if (req.session.loggedin && req.session.role === role) {
+            next();
+        } else {
+            res.send('Forbidden');
+        }
+    };
+};
+
 app.get("/registration",function (req,res){
    res.render("registration.ejs");
 });
@@ -63,10 +74,11 @@ var email=req.body.email;
 var phone_no=req.body.phone_no;
 var password=req.body.password;
 var cpassword =req.body.cpassword;
+var role=req.body.role;
 
 if(password==cpassword){
 
-    var sql="INSERT INTO user (name,email,phone_no,password) values('"+name+"','"+email+"','"+phone_no+"','"+password+"');";
+    var sql="INSERT INTO user (name,email,phone_no,password,role) values('"+name+"','"+email+"','"+phone_no+"','"+password+"','"+role+"');";
     con.query(sql,function (error,results) {
         if (error) throw error;
 
@@ -83,7 +95,7 @@ else{
 
 
 
-app.get("/book_add",function (req,res){
+app.get("/book_add",requireRole('Admin'),function (req,res){
     res.render("book_add.ejs")
 });
 
@@ -115,21 +127,42 @@ app.post("/book_add",function (req,res){
 });
 
 app.get("/book_list",function (req,res){
-    var sql="SELECT * FROM book_details";
-    con.query (sql ,function (error,results){
-        console.log(results);
-        if(error)
-        {
-            throw error;
+    if(req.session.loggedin==true) {
+        if(req.session.role === 'Admin') {
+            var sql = "SELECT * FROM book_details";
+            con.query(sql, function (error, results) {
+                console.log(results);
+                if (error) {
+                    throw error;
+                } else {
+
+
+                    res.render("book_list.ejs", {book_details: results});
+                }
+            });
         }
         else{
+            var sql = "SELECT * FROM book_details";
+            con.query(sql, function (error, results) {
+                console.log(results);
+                if (error) {
+                    throw error;
+                } else {
 
-            res.render( "book_list.ejs", { book_details :results});
+
+                    res.render("book_listUser.ejs", {book_details: results});
+                }
+            });
+
         }
-    });
+    }
+    else{
+        res.redirect("/login");
+    }
 });
 
-app.get("/book_update",function (req,res){
+
+app.get("/book_update",requireRole('Admin'),function (req,res){
     con.connect(function (error){
         if(error)  console.log(error);
 
@@ -172,7 +205,7 @@ app.post("/update",function (req,res){
     });
 });
 
-app.get("/book_delete",function (req,res) {
+app.get("/book_delete",requireRole('Admin'),function (req,res) {
     con.connect(function (error) {
         if (error) console.log(error);
 
